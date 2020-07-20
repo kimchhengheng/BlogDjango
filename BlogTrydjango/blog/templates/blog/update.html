@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+    <form method="POST"> {% csrf_token %}
+        {% if alert %}
+        <div class="alert alert-danger" role="alert">
+          {{alert}}
+        </div>
+        {% endif %}
+        {% if form %}
+        {{form.as_p}}
+        <button class="btn btn-primary">update</button>
+        {% else %}
+        <input name="forupdate">
+        <button class="btn btn-primary">update</button>
+        {% endif %}
+
+    </form>
+{% endblock %}

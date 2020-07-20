@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block content %} 
+   
+    <form method="POST"> {% csrf_token %}
+        {% if alert %}
+        <div class="alert alert-danger" role="alert">
+          {{alert}}
+        </div> 
+        {% endif %}
+        <input name="delete">
+        <button class="btn btn-danger">delete</button>
+
+        {% if form.title %}
+            <p>The blogpost that delete</p>
+         {% include "inlineblock.html" with object=form %}
+        {% endif %}
+    </form>
+{% endblock %}}

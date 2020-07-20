@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if alert %}
+        <div class="alert alert-danger" role="alert">
+          {{alert}}
+        </div>
+    {%endif %}
+    {% if object|length == 0 %}
+<!--    length == 0 mean empty list or nonempty list-->
+<!--query set empty can have object or not -->
+        {% if object %}
+        {% include "inlineblock.html" with object=object %}
+        {% endif %}
+    {%else %}
+            {% for var in object %}
+               {% include "inlineblock.html" with object=var %}
+
+
+            {% endfor %}
+    {% endif%}
+
+
+
+{% endblock %}
+
+ 
+
+ 
+ 
